@@ -8,11 +8,8 @@ const flipItem = (index, status) =>
 
 const CheckList = ({ onChange }) => {
   const [status, setStatus] = useState(initialStatus);
-  const toggleItem = useCallback(index => {
-    setStatus(status => flipItem(index, status));
-  }, []);
-
   const completed = status.every(isChecked);
+
   useEffect(() => {
     onChange(completed);
   }, [onChange, completed]);
@@ -24,7 +21,7 @@ const CheckList = ({ onChange }) => {
           key={index}
           text={name}
           checked={status[index]}
-          onClick={() => toggleItem(index)}
+          onClick={() => setStatus(flipItem(index, status))}
         />
       ))}
     </ul>

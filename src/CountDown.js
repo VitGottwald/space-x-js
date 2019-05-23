@@ -4,24 +4,21 @@ const countDownInterval = 5;
 
 const CountDown = ({ command, onLaunch }) => {
   const [timeToLaunch, setTimeToLaunch] = useState(countDownInterval);
+
   useEffect(() => {
-    if (command === "COUNTING") {
-      if (timeToLaunch > 0) {
-        const timerId = setTimeout(() => {
-          setTimeToLaunch(remaining => remaining - 1);
-        }, 1000);
-        return () => clearInterval(timerId);
-      } else {
-        onLaunch();
-      }
-    }
-    if (command === "READY") {
-      setTimeToLaunch(countDownInterval);
-      return;
-    }
-    if (command === "STOP") {
-      // do nothing
-      return;
+    switch (command) {
+      case "COUNTING":
+        if (timeToLaunch > 0) {
+          const timerId = setTimeout(() => {
+            setTimeToLaunch(timeToLaunch - 1);
+          }, 1000);
+          return () => clearInterval(timerId);
+        } else {
+          onLaunch();
+          return;
+        }
+      default:
+        return;
     }
   }, [command, timeToLaunch, onLaunch]);
 

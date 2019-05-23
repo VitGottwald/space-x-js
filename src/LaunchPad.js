@@ -26,11 +26,12 @@ const LaunchPad = () => {
     complete => complete && dispatch("COMPLETE_CHECK"),
     []
   );
+
   return (
     <div className="App">
-      <CheckList onChange={onCheckListChange} />
-      <CountDown command={status} onLaunch={() => dispatch("LAUNCH")} />
       <Rocket name="Falcon 9" launched={status === "LAUNCHED"} />
+      <CountDown command={status} onLaunch={() => dispatch("LAUNCH")} />
+      <CheckList onChange={onCheckListChange} />
     </div>
   );
 };

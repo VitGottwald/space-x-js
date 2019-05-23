@@ -61,7 +61,8 @@ const Rocket = ({ name, launched }) => {
         )
       }}
     >
-      {name} {fire && "🔥"} {"🚀"} {dragon && "🐉"}
+      {fire && "🔥"} {"🚀"} {dragon && "🐉"}
+      <div>{name} </div>
     </animated.div>
   );
 };

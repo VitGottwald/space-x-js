@@ -47,8 +47,6 @@ const Rocket = ({ name, launched }) => {
     }
   });
 
-  console.log(xyz);
-
   useEffect(() => {
     if (launched) {
       setState("LAUNCHED");

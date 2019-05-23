@@ -22,7 +22,6 @@ const initialState = {
 
 const LaunchPad = () => {
   const [{ status }, dispatch] = useReducer(reduce, initialState);
-  console.log("Status: ", status);
   const onCheckListChange = useCallback(
     complete => complete && dispatch("COMPLETE_CHECK"),
     []

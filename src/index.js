@@ -44,7 +44,7 @@ const App = () => {
     <div className="App">
       <CheckList onChange={onCheckListChange} />
       <CountDown command={status} onLaunch={() => dispatch("LAUNCH")} />
-      <Rocket name="Falcon 9" launch={status === "LAUNCHED"} />
+      <Rocket name="Falcon 9" launched={status === "LAUNCHED"} />
     </div>
   );
 };

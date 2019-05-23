@@ -29,9 +29,7 @@ const stateToTarget = state => {
 const Rocket = ({ name, launched }) => {
   const [state, setState] = useState("READY");
   const { dragon, fire } = stateToBlocks(state);
-
   const target = stateToTarget(state);
-  console.log(state, from, target);
   const { xyz } = useSpring({
     from,
     xyz: target,
@@ -49,6 +47,8 @@ const Rocket = ({ name, launched }) => {
     }
   });
 
+  console.log(xyz);
+
   useEffect(() => {
     if (launched) {
       setState("LAUNCHED");
@@ -63,7 +63,7 @@ const Rocket = ({ name, launched }) => {
         )
       }}
     >
-      {name} {"🚀"} {dragon && "🐉"} {fire && "🔥"}
+      {name} {fire && "🔥"} {"🚀"} {dragon && "🐉"}
     </animated.div>
   );
 };
